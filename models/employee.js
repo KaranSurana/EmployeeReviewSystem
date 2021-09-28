@@ -16,6 +16,12 @@ const empSchema = new mongoose.Schema({
     username:{
         type: String,
         unique: true
+    },
+    rating:{
+        type: Number
+    },
+    number:{
+        type: Number
     }
 })
 
