@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <img src="logo.svg" alt="Logo" height="50%">
+        <span>Employee Reviews</span>
+        <div id="navbar">
+            <a href="/">Home</a>
+            <a href="/">Register</a>
+        </div>
+    </header>
+    <main>
+        <br>
+        <h2>Admins</h2>
+        <br>
+        <div id="adminslist">
+            <div id="individual">
+                <i class="fas fa-user"></i>
+                <span> Karan Surana</span><br>
+                <i class="fas fa-envelope"></i>
+                <span> KaranSurana@gmail.com</span><br>
+                <i class="fas fa-user-plus"></i>
+                <span>KaranSurana</span>
+
+                <form action="/" method="post">
+
+                    <div id="ratingsid" class="rate">
+                        <input type="radio" id="star5" name="rate" value="5" />
+                        <label for="star5" title="text">5 stars</label>
+                        <input type="radio" id="star4" name="rate" value="4" />
+                        <label for="star4" title="text">4 stars</label>
+                        <input type="radio" id="star3" name="rate" value="3" />
+                        <label for="star3" title="text">3 stars</label>
+                        <input type="radio" id="star2" name="rate" value="2" />
+                        <label for="star2" title="text">2 stars</label>
+                        <input type="radio" id="star1" name="rate" value="1" />
+                        <label for="star1" title="text">1 star</label>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <br>
+        <h2>Employees</h2>
+        <div id="emplist">
+
+        </div>
+    </main>
+</body>
+</body>
+
+</html>
