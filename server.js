@@ -14,6 +14,12 @@ const db = require('./config/mongoose')
 
 const repository = require('./models/employee');
 
+const session = require('express-session');
+const passport = require('passport');
+
+const passportLocal = require('./config/passport-local');
+
+
 // view engine 
 app.set('view engine','ejs');
 
@@ -31,6 +37,23 @@ app.use(express.static('views'));
 app.set('view-engine','ejs');
 
 app.set('views','./views');
+
+
+app.use(session({
+    name:'emp',
+    secret: 'blahsomething',
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+        maxAge: (1000*60*100)
+    }
+}));
+
+app.use(passport.initialize());
+
+app.use(passport.session());
+
+app.use(passport.setAuthenticatedUser);
 
 app.use('/',require('./routes/index'));
 

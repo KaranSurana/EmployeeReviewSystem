@@ -9,6 +9,9 @@ const empSchem = new mongoose.Schema({
         type: String,
         required: true
     },
+    password: {
+        type: String
+    },
     admin: {
         type: Boolean,
         default: false
