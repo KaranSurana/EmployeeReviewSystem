@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-// creating an issue schema in mongodb
-const empSchema = new mongoose.Schema({
+// creating an employee schema in mongodb
+const empSchem = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -15,16 +15,28 @@ const empSchema = new mongoose.Schema({
     },
     username:{
         type: String,
-        unique: true
     },
     rating:{
-        type: Number
+        type: Number,
+        default: 0,
+
     },
     number:{
-        type: Number
+        type: Number,
+        default: 0,
+
+    },
+    canvote:{
+        type: Boolean,
+        default: false,
+
+    },
+    liked:{
+        type: [],
+        
     }
 })
 
-const emp = mongoose.model('employee', empSchema);
+const emp = mongoose.model('employee_details', empSchem);
 
 module.exports = emp;

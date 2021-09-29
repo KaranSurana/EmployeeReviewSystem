@@ -18,6 +18,7 @@
         <span>Employee Reviews</span>
         <div id="navbar">
             <a href="/">Home</a>
+            <a href="/">Sign In</a>
             <a href="/register">Register</a>
         </div>
     </header>
@@ -26,36 +27,69 @@
         <h2>Admins</h2>
         <br>
         <div id="adminslist">
-            <div id="individual">
-                <i class="fas fa-user"></i>
-                <span> Karan Surana</span><br>
-                <i class="fas fa-envelope"></i>
-                <span> KaranSurana@gmail.com</span><br>
-                <i class="fas fa-user-plus"></i>
-                <span>KaranSurana</span>
-
-                <form action="/" method="post">
-
-                    <div id="ratingsid" class="rate">
-                        <input type="radio" id="star5" name="rate" value="5" />
-                        <label for="star5" title="text">5 stars</label>
-                        <input type="radio" id="star4" name="rate" value="4" />
-                        <label for="star4" title="text">4 stars</label>
-                        <input type="radio" id="star3" name="rate" value="3" />
-                        <label for="star3" title="text">3 stars</label>
-                        <input type="radio" id="star2" name="rate" value="2" />
-                        <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rate" value="1" />
-                        <label for="star1" title="text">1 star</label>
+            <% for(var i=0;i<emp.length;i++){ %>
+                <%if(emp[i].admin){%>
+                    <div id="individual">
+                        <i id="us" class="fas fa-user"></i>
+                        <span id="name"><%= emp[i].name%></span>
+                        <i id="env" class="fas fa-envelope"></i>
+                        <span id="email"> <%= emp[i].email%></span>
+                        <i id="un" class="fas fa-user-plus"></i>
+                        <span id="username"><%= emp[i].username%></span>
+                        <%if(emp[i].canvote){%>
+                            <form action="/" method="post">
+                                <div id="ratingsid" class="rate">
+                                    <input type="radio" id="star5" name="rate" value="5" />
+                                    <label for="star5" title="text">5 stars</label>
+                                    <input type="radio" id="star4" name="rate" value="4" />
+                                    <label for="star4" title="text">4 stars</label>
+                                    <input type="radio" id="star3" name="rate" value="3" />
+                                    <label for="star3" title="text">3 stars</label>
+                                    <input type="radio" id="star2" name="rate" value="2" />
+                                    <label for="star2" title="text">2 stars</label>
+                                    <input type="radio" id="star1" name="rate" value="1" />
+                                    <label for="star1" title="text">1 star</label>
+                                </div>
+                            </form>
+                        <%}%>
                     </div>
-
-                </form>
-            </div>
+                <%}%>
+            <%}%>
         </div>
         <br>
         <h2>Employees</h2>
-        <div id="emplist">
+        <br>
+        <div id="adminslist">
+            <% for(var i=0;i<emp.length;i++){ %>
+                <%if(!emp[i].admin){%>
+                    <div id="individual">
+                        <i id="us" class="fas fa-user"></i>
+                        <span id="name"><%= emp[i].name%></span>
+                        <i id="env" class="fas fa-envelope"></i>
+                        <span id="email"> <%= emp[i].email%></span>
+                        <i id="un" class="fas fa-user-plus"></i>
+                        <span id="username"><%= emp[i].username%></span>
 
+                        
+                        <%if(emp[i].canvote){%>
+                            <form action="/" method="post">
+                                <div id="ratingsid" class="rate">
+                                    <input type="radio" id="star5" name="rate" value="5" />
+                                    <label for="star5" title="text">5 stars</label>
+                                    <input type="radio" id="star4" name="rate" value="4" />
+                                    <label for="star4" title="text">4 stars</label>
+                                    <input type="radio" id="star3" name="rate" value="3" />
+                                    <label for="star3" title="text">3 stars</label>
+                                    <input type="radio" id="star2" name="rate" value="2" />
+                                    <label for="star2" title="text">2 stars</label>
+                                    <input type="radio" id="star1" name="rate" value="1" />
+                                    <label for="star1" title="text">1 star</label>
+                                </div>
+                            </form>
+                        <%}%>
+                    </div>
+                <%}%>
+            <%}%>
         </div>
     </main>
 </body>
