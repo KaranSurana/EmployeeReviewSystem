@@ -17,9 +17,14 @@
         <img src="logo.svg" alt="Logo" height="50%">
         <span>Employee Reviews</span>
         <div id="navbar">
-            <a href="/">Home</a>
-            <a href="/signin">Sign In</a>
-            <a href="/register">Register</a>
+            <%if(locals.empl){%>
+                <a href="/">Home</a>
+                <a href="/ratings">Ratings</a>
+                <a href="/signout">Sign Out</a>
+            <%} else {%>
+                <a href="/signin">Sign In</a>
+                <a href="/register">Register</a>
+            <%}%>
         </div>
     </header>
     <main>
@@ -36,21 +41,27 @@
                         <span id="email"> <%= emp[i].email%></span>
                         <i id="un" class="fas fa-user-plus"></i>
                         <span id="username"><%= emp[i].username%></span>
-                        <%if(emp[i].canvote){%>
-                            <form action="/" method="post">
+
+                        
+                        <%if(!(empl.username == emp[i].username) &&(empl.admin || empl.canvote)){%>
+                            <form action=<%="/?id="+emp[i].id%> method="post">
                                 <div id="ratingsid" class="rate">
-                                    <input type="radio" id="star5" name="rate" value="5" />
-                                    <label for="star5" title="text">5 stars</label>
-                                    <input type="radio" id="star4" name="rate" value="4" />
-                                    <label for="star4" title="text">4 stars</label>
-                                    <input type="radio" id="star3" name="rate" value="3" />
-                                    <label for="star3" title="text">3 stars</label>
-                                    <input type="radio" id="star2" name="rate" value="2" />
-                                    <label for="star2" title="text">2 stars</label>
-                                    <input type="radio" id="star1" name="rate" value="1" />
-                                    <label for="star1" title="text">1 star</label>
+                                    <input type="radio" id=<%="id=1"+emp[i].id%> name="rate" value="5" />
+                                    <label for=<%="id=1"+emp[i].id%> title="text">5 stars</label>
+                                    <input type="radio" id=<%="id=2"+emp[i].id%> name="rate" value="4" />
+                                    <label for=<%="id=2"+emp[i].id%> title="text">4 stars</label>
+                                    <input type="radio" id=<%="id=3"+emp[i].id%> name="rate" value="3" />
+                                    <label for=<%="id=3"+emp[i].id%> title="text">3 stars</label>
+                                    <input type="radio" id=<%="id=4"+emp[i].id%> name="rate" value="2" />
+                                    <label for=<%="id=4"+emp[i].id%> title="text">2 stars</label>
+                                    <input type="radio" id=<%="id=5"+emp[i].id%> name="rate" value="1" />
+                                    <label for=<%="id=5"+emp[i].id%> title="text">1 star</label>
+                                    <button style="width: 20px; height: 20px; position: relative; left: 185px; top: 11px;" type="submit" class="btn btn-success">
+                                        <i style="font-size: larger; position: relative; left: -4.5px; top: -1px;" class="far fa-check-square"></i>
+                                    </button>
                                 </div>
                             </form>
+                            <a href="" style="color: white;"></a>
                         <%}%>
                     </div>
                 <%}%>
@@ -69,21 +80,33 @@
                         <span id="email"> <%= emp[i].email%></span>
                         <i id="un" class="fas fa-user-plus"></i>
                         <span id="username"><%= emp[i].username%></span>
-
+                        <%if(empl.admin && !(empl.username == emp[i].username)){%>
+                            <%if(!(emp[i].canvote)){%>
+                                <a href=<%="/vote?id="+emp[i].id%>><i style="position: absolute; left: 340px; top: 36px; color: white;" class="fas fa-vote-yea"></i></a>
+                            <%}%>
+                            <a href=<%="/admin?id="+emp[i].id%>><i style="position: absolute; left: 390px; top: 36px; color: white;" class="fas fa-users-cog"></i></a>
+                            
+                        <%}%>
                         
-                        <%if(emp[i].canvote){%>
-                            <form action="/" method="post">
+                        <%if(!(empl.username == emp[i].username) &&(empl.admin || empl.canvote)){%>
+                            <form action=<%="/?id="+emp[i].id%> method="post">
                                 <div id="ratingsid" class="rate">
-                                    <input type="radio" id="star5" name="rate" value="5" />
-                                    <label for="star5" title="text">5 stars</label>
-                                    <input type="radio" id="star4" name="rate" value="4" />
-                                    <label for="star4" title="text">4 stars</label>
-                                    <input type="radio" id="star3" name="rate" value="3" />
-                                    <label for="star3" title="text">3 stars</label>
-                                    <input type="radio" id="star2" name="rate" value="2" />
-                                    <label for="star2" title="text">2 stars</label>
-                                    <input type="radio" id="star1" name="rate" value="1" />
-                                    <label for="star1" title="text">1 star</label>
+                                    <input type="radio" id=<%="id=1"+emp[i].id%> name="rate" value="5" />
+                                    <label for=<%="id=1"+emp[i].id%> title="text">5 stars</label>
+                                    <input type="radio" id=<%="id=2"+emp[i].id%> name="rate" value="4" />
+                                    <label for=<%="id=2"+emp[i].id%> title="text">4 stars</label>
+                                    <input type="radio" id=<%="id=3"+emp[i].id%> name="rate" value="3" />
+                                    <label for=<%="id=3"+emp[i].id%> title="text">3 stars</label>
+                                    <input type="radio" id=<%="id=4"+emp[i].id%> name="rate" value="2" />
+                                    <label for=<%="id=4"+emp[i].id%> title="text">2 stars</label>
+                                    <input type="radio" id=<%="id=5"+emp[i].id%> name="rate" value="1" />
+                                    <label for=<%="id=5"+emp[i].id%> title="text">1 star</label>
+                                    <button style="width: 20px; height: 20px; position: relative; left: 185px; top: 11px;" type="submit" class="btn btn-success">
+                                        <i style="font-size: larger; position: relative; left: -4.5px; top: -1px;" class="far fa-check-square"></i>
+                                    </button>
+                                    <%if(empl.admin){%>
+                                        <a href=<%="/deleteemp?id="+emp[i].id%>><i style="position: absolute; left: 240px; top: 15px; color: red;" class="fas fa-user-minus"></i></a>
+                                    <%}%>
                                 </div>
                             </form>
                         <%}%>

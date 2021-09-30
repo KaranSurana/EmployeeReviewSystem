@@ -39,10 +39,10 @@ main>h2{
 
 #navbar{
     display: flex;
-    width: 20vw;
+    width: 25vw;
     justify-content: space-around;
     position: relative;
-    left: 65vw;
+    left: 62vw;
     align-items: center;
     
 }
@@ -90,7 +90,7 @@ main>h2{
 
 #individual{
     height: 12vh;
-    width: 40vw;
+    width: 45vw;
     position: relative;
     left: 29%;
     border: 2px solid white;
