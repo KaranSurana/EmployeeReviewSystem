@@ -8,7 +8,6 @@ const homeController = require('../controllers/usercontroller');
 const emp = require("../models/employee");
 
 router.get('/',passport.checkAuthentication,function(req,res){
-    console.log("hel")
     emp.find({},function(err,emp){
         if(err){
             console.log(err)
