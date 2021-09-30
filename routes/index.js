@@ -58,7 +58,7 @@ router.post('/',function(req,res){
                 return res.redirect('back');
             })
         }else{
-            emp.findByIdAndUpdate(req.query.id,{rating:((parseInt(req.body.rate)+rating)/2).toFixed(2)},function(err,emp){
+            emp.findByIdAndUpdate(req.query.id,{rating:((parseInt(req.body.rate)+rating)/2).toFixed(1)},function(err,emp){
                 if(err){
                     console.log(err);
                 }
