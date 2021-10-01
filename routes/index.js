@@ -11,7 +11,6 @@ router.get('/admin',function(req,res){
     emp.findByIdAndUpdate(req.query.id,{admin:true,canvote:true},function(err,emp){
         return res.redirect('back');
     })
-    console.log(req.query.id);
 })
 
 router.get('/ratings',passport.checkAuthentication,function(req,res){
@@ -34,20 +33,35 @@ router.get('/vote',function(req,res){
         }
         return res.redirect('back');
     })
-    console.log(req.query.id);
 })
 
 
 router.get('/signout',homeController.destroySession);
 
 router.post('/',function(req,res){
-    console.log(req.query.id);
+
+    emp.find({_id:req.user.id},function(err,userr){
+        if(err){
+            console.log(err);
+            return;
+        }
+        
+        var array=userr[0].liked;
+        array.push(req.query.id)
+        emp.findByIdAndUpdate(req.user.id,{'liked':array},function(err){
+            if(err){
+                console.log(err);
+                return;
+            }
+        })
+    })
+
+
     emp.find({_id:req.query.id},function(err,emp1){
         if(err){
             console.log(err)
             return;
         }
-        console.log(emp1);
         var rating = emp1[0].rating;
 
         if(rating==0){
@@ -76,7 +90,6 @@ router.get('/deleteemp',function(req,res){
             return;
         }
         res.redirect('back');
-        console.log("Deleted")
     });
 })
 
@@ -102,7 +115,6 @@ router.post('/register',function(req,res){
             console.log(err);
             return;
         }
-        console.log(newEmp);
         res.render("signin")
     })
 })

@@ -112,7 +112,13 @@
                 <td><%=emp[i].name%></td>
                 <td><%=emp[i].username%></td>
                 <td><%=emp[i].email%></td>
-                <td><%=emp[i].admin%></td>
+                <td><%if(emp[i].admin){%>
+                    Yes
+                <%} else {%>
+                    No
+                <%}%>
+
+                </td>
                 <td><%=emp[i].rating%></td>
             </tr>
         <%}%>

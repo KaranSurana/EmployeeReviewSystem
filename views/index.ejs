@@ -43,7 +43,7 @@
                         <span id="username"><%= emp[i].username%></span>
 
                         
-                        <%if(!(empl.username == emp[i].username) &&(empl.admin || empl.canvote)){%>
+                        <%if(!(empl.username == emp[i].username) &&(empl.admin || empl.canvote) && (!((empl.liked).includes(emp[i].id)))){%>
                             <form action=<%="/?id="+emp[i].id%> method="post">
                                 <div id="ratingsid" class="rate">
                                     <input type="radio" id=<%="id=1"+emp[i].id%> name="rate" value="5" />
@@ -88,7 +88,7 @@
                             
                         <%}%>
                         
-                        <%if(!(empl.username == emp[i].username) &&(empl.admin || empl.canvote)){%>
+                        <%if(!(empl.username == emp[i].username) &&(empl.admin || empl.canvote) && (!((empl.liked).includes(emp[i].id)))){%>
                             <form action=<%="/?id="+emp[i].id%> method="post">
                                 <div id="ratingsid" class="rate">
                                     <input type="radio" id=<%="id=1"+emp[i].id%> name="rate" value="5" />
@@ -104,11 +104,12 @@
                                     <button style="width: 20px; height: 20px; position: relative; left: 185px; top: 11px;" type="submit" class="btn btn-success">
                                         <i style="font-size: larger; position: relative; left: -4.5px; top: -1px;" class="far fa-check-square"></i>
                                     </button>
-                                    <%if(empl.admin){%>
-                                        <a href=<%="/deleteemp?id="+emp[i].id%>><i style="position: absolute; left: 240px; top: 15px; color: red;" class="fas fa-user-minus"></i></a>
-                                    <%}%>
+                                    
                                 </div>
                             </form>
+                        <%}%>
+                        <%if(empl.admin){%>
+                            <a href=<%="/deleteemp?id="+emp[i].id%>><i style="position: absolute; left: 660px; top: 35px; color: red;" class="fas fa-user-minus"></i></a>
                         <%}%>
                     </div>
                 <%}%>
