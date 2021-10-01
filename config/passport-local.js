@@ -1,8 +1,12 @@
+// using passport for authentication
+
 const passport = require('passport');
 
 const LocalStrategy = require('passport-local').Strategy;
 
 const emp = require('../models/employee');
+
+// creating a new strategy
 
 passport.use(new LocalStrategy({
     usernameField: 'username',

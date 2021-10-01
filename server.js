@@ -38,6 +38,7 @@ app.set('view-engine','ejs');
 
 app.set('views','./views');
 
+// using session cookie
 
 app.use(session({
     name:'emp',
@@ -48,6 +49,8 @@ app.use(session({
         maxAge: (1000*60*100)
     }
 }));
+
+// initializing passport cookie
 
 app.use(passport.initialize());
 

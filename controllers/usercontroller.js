@@ -1,3 +1,6 @@
+// controllers for different routes
+
+
 module.exports.createSession = function(req,res){
     return res.redirect('/')
 }

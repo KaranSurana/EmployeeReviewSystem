@@ -3,16 +3,20 @@ const passport = require('passport');
 
 var router = express.Router();
 
+
+// getting controllers for routes
 const homeController = require('../controllers/usercontroller');
 
 const emp = require("../models/employee");
+// getting all the routes
+
 
 router.get('/admin',function(req,res){
     emp.findByIdAndUpdate(req.query.id,{admin:true,canvote:true},function(err,emp){
         return res.redirect('back');
     })
 })
-
+// passport authentication in routes
 router.get('/ratings',passport.checkAuthentication,function(req,res){
     emp.find({},function(err,empl){
         if(err){
@@ -25,6 +29,7 @@ router.get('/ratings',passport.checkAuthentication,function(req,res){
         })
     })
 })
+
 
 router.get('/vote',function(req,res){
     emp.findByIdAndUpdate(req.query.id,{canvote:true},function(err,emp){
